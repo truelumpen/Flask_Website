@@ -1,0 +1,27 @@
+{% extends 'loginpage.html' %}
+
+{% block login_t %}
+    Вход в аккаунт
+{% endblock %}
+
+{% block login_type %}
+    <small class="text-muted">
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <p id="error_text">{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <form method="post" id="sign_in_block">
+        <div class="form-floating mb-3">
+            <input name="login" type="text" class="form-control rounded-4" id="floatingInput" placeholder="name@example.com">
+            <label for="floatingInput">Почта</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input name="password" type="password" class="form-control rounded-4" id="floatingPassword" placeholder="Password">
+            <label for="floatingPassword">Пароль</label>
+        </div>
+            <input class="w-100 mb-2 btn btn-lg rounded-4 btn-warning" type="submit" value="Войти">
+    </form>
+{% endblock %}

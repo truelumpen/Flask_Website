@@ -1,0 +1,37 @@
+{% extends 'base_fil.html' %}
+
+{% block title %}
+Главная
+{% endblock %}
+
+
+{% block main_content %} <div>
+<div id="centr-text">
+    <div>
+      <h1 id="text_main_block" class="bg-dark display-4 fw-normal">LADA</h1>
+      <p id="text_main_block_p" class="bg-dark lead fw-normal">На нашем сервисе Вы можете купить новые или подержанные авто LADA.</p>
+    </div>
+  </div>
+      <div style="width: 80%">
+        <img src="static/img/lada.jpg" style="width: 100%; margin-left: 10%;">
+        </div>
+<div class="row" id="main_row">
+    {#    чёрный блок#}
+    <div id="col" class="col bg-dark me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
+      <div id="text_block_mainpg" class="my-3 py-3">
+        <h2 class="display-5">Онлайн оформление</h2>
+        <p class="lead">Больше никакой бумажной возни! Договор составят онлайн.</p>
+      </div>
+      <div class="bg-light shadow-sm mx-auto" style="width: 80%; height: 20px; border-radius: 21px 21px 0 0;"></div>
+    </div>
+{#    белый блок#}
+    <div id="col" class="col bg-light me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+      <div id="text_block_mainpg" class="my-3 p-3">
+        <h2 class="display-5">Филиалы</h2>
+        <p class="lead">На нашем сайте вы сможете найти подходящий филиал и купить машину LADA.</p>
+      </div>
+      <div class="bg-dark shadow-sm mx-auto" style="width: 80%; height: 20px; border-radius: 21px 21px 0 0;"></div>
+    </div>
+</div>
+</div>
+{% endblock %}

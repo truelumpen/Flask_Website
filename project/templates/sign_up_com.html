@@ -1,0 +1,47 @@
+{% extends 'loginpage.html' %}
+
+{% block login_t %}
+Регистрация
+{% endblock %}
+
+{% block login_type %}
+    <small class="text-muted">
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <p id="error_text">{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    </small>
+    <form method="post" id="sign_up_block">
+    <div class="form-floating mb-3">
+        <input name="com_name" class="form-control rounded-4" id="floatingInput" type="text" placeholder="name@example.com">
+        <label for="floatingInput">Название компании</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input name="fname" class="form-control rounded-4" id="floatingInput" type="text" placeholder="name@example.com">
+        <label for="floatingInput">Имя представителя</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input name="lname" class="form-control rounded-4" id="floatingInput" type="text" placeholder="name@example.com">
+        <label for="floatingInput">Фамилия представителя</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input name="email" class="form-control rounded-4" id="floatingInput" type="email" placeholder="name@example.com">
+        <label for="floatingInput">Почта</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input name="password" type="password" class="form-control rounded-4" id="floatingPassword" placeholder="Password">
+        <label for="floatingPassword">Пароль</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input name="password2" type="password" class="form-control rounded-4" id="floatingPassword" placeholder="Password">
+        <label for="floatingPassword">Подтвердите пароль</label>
+    </div>
+          <input class="w-100 mb-2 btn btn-lg rounded-4 btn-warning" value="Создать аккаунт" type="submit">
+    <hr class="my-4">
+    <small class="text-muted">Создавая аккаунт, Вы соглашаетесь с правилами политики конфиденциальности.
+    </small>
+</form>
+{% endblock %}

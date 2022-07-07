@@ -1,0 +1,36 @@
+{% extends 'base_fil.html' %}
+
+{% block title %}
+Профиль
+{% endblock %}
+
+{% block main_content %}
+  <div class="modal-dialog" role="document">
+  <form action="delete_auto/{{ car.id }}" method="post">
+  <div id="delete_notification" style="position: absolute; width: 100%; height: 100%; display: none" class="modal modal-alert position-absolute bg-dark py-5" tabindex="-1" role="dialog" id="modalChoice">
+  <div class="modal-dialog" role="document">
+    <div class="mmm">
+      <div class="modal-body p-4 text-center">
+        <h5 class="mb-0">Удалить автомобиль?</h5>
+        <p class="mb-0">Это действие нельзя будет отменить.</p>
+      </div>
+      <div class="modal-footer flex-nowrap p-0">
+        <button id="cancel" type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0 border-right"><strong>Нет, оставить</strong></button>
+        <button type="submit" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0" data-bs-dismiss="modal">Да, удалить</button>
+      </div>
+    </div>
+  </div>
+</div>
+  </form>
+    <div class="mmm rounded-5 shadow">
+      <div class="modal-header p-5 pb-4 border-bottom-0">
+        <h2 class="fw-bold mb-0" id="pro_em">{% block login_t %}{% endblock %}</h2>
+      </div>
+
+      <div class="modal-body p-5 pt-0">
+          {% block login_type %}{% endblock %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends 'base_fil.html' %}
+
+{% block title %}
+Добавление автомобиля
+{% endblock %}
+
+{% block main_content %}
+    <div class="modal-dialog" role="document">
+    <div class="modal-content rounded-5 shadow">
+      <div class="modal-header p-5 pb-4 border-bottom-0">
+        <h2 class="fw-bold mb-0" id="pro_em">Добавление автомобиля</h2>
+      </div>
+
+      <div class="modal-body p-5 pt-0">
+    <small class="text-muted">
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                {% if message=='Автомобиль успешно добавлен!' %}
+                    <p style="color: green">{{ message }}</p>
+                {% else %}
+                    <p id="error_text">{{ message }}</p>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    </small>
+    <form method="post" id="sign_up_block_fil" enctype="multipart/form-data"  style="height: 500px">
+    <h6>Фото автомобиля</h6>
+    <div class="form-floating mb-3">
+        <input name="image" class="form-control rounded-4" id="image" type="file">
+    </div>
+    <div class="form-floating mb-3">
+        <input name="price" class="form-control rounded-4" id="floatingInput" type="text" placeholder="name@example.com">
+        <label for="floatingInput">Цена</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input name="brand" class="form-control rounded-4" id="floatingInput" type="text" placeholder="name@example.com">
+        <label for="floatingInput">Марка машины</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input name="model" class="form-control rounded-4" id="floatingInput" type="text" placeholder="name@example.com">
+        <label for="floatingInput">Модель</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input name="distance" class="form-control rounded-4" id="floatingInput" type="text" placeholder="name@example.com">
+        <label for="floatingInput">Пробег (в км)</label>
+    </div>
+          <input class="w-100 mb-2 btn btn-lg rounded-4 btn-warning" value="Добавить" type="submit">
+    <hr style="margin: 10px">
+        <small class="text-muted">Ваши автомобили Вы можете посмотреть на странице своего филиала
+    </small>
+</form>
+      </div>
+    </div>
+  </div>
+{% endblock %}

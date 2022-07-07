@@ -1,0 +1,63 @@
+{% extends 'profilepage_seller.html' %}
+
+{% block login_t %}
+Профиль🔒
+{% endblock %}
+
+{% block login_type %}
+    <small class="text-muted">
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                {% if message=='Изменения сохранены' %}
+                    <p style="color: green">{{ message }}</p>
+                {% else %}
+                    <p id="error_text">{{ message }}</p>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    </small>
+    <form method="post" id="sign_up_block" enctype="multipart/form-data" style="pointer-events: none; height: 565px">
+    <h6>Текущее фото на странице Вашего филиала. Вы можете загрузить новое:</h6>
+    <div class="form-floating mb-3">
+        <input name="image" class="form-control rounded-4" id="image" type="file">
+    </div>
+    <div class="form-floating mb-3">
+        <input value="{{ user.email }}" name="email" class="form-control rounded-4" id="floatingInput" type="email" placeholder="name@example.com">
+        <label for="floatingInput">Почта</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input value="{{ user.fil_name }}" name="fil_name" class="form-control rounded-4" id="floatingInput" type="text" placeholder="name@example.com">
+        <label for="floatingInput">Название филиала</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input value="{{ user.fname }}" name="fname" class="form-control rounded-4" id="floatingInput" type="text" placeholder="name@example.com">
+        <label for="floatingInput">Имя руководителя</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input value="{{ user.lname }}" name="lname" class="form-control rounded-4" id="floatingInput" type="text" placeholder="name@example.com">
+        <label for="floatingInput">Фамилия руководителя</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input value="{{ user.inn }}" name="inn" class="form-control rounded-4" id="floatingInput" type="text" placeholder="name@example.com">
+        <label for="floatingInput">ИНН</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input value="{{ user.address }}" name="address" class="form-control rounded-4" id="floatingInput" type="text" placeholder="name@example.com">
+        <label for="floatingInput">Адрес филиала</label>
+    </div>
+    <div id="hidden_psw" style="display: none">
+    <div class="form-floating mb-3">
+        <input name="password" type="password" class="form-control rounded-4" id="floatingPassword" placeholder="Password">
+        <label for="floatingPassword">Пароль</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input name="password2" type="password" class="form-control rounded-4" id="floatingPassword" placeholder="Password">
+        <label for="floatingPassword">Подтвердите пароль</label>
+    </div>
+    </div>
+          <input id="save" style="display: none" class="w-100 mb-2 btn btn-lg rounded-4 btn-warning save" value="Сохранить" type="submit">
+</form>
+    <input id="edit" class="w-100 mb-2 btn btn-lg rounded-4 btn-warning" value="Редактировать" type="button">
+{% endblock %}

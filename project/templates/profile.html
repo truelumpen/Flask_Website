@@ -1,0 +1,47 @@
+{% extends 'profilepage.html' %}
+
+{% block login_t %}
+Профиль🔒
+{% endblock %}
+
+{% block login_type %}
+    <small class="text-muted">
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                {% if message=='Изменения сохранены' %}
+                    <p style="color: green">{{ message }}</p>
+                {% else %}
+                    <p id="error_text">{{ message }}</p>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    </small>
+    <form method="post" id="sign_up_block" style="pointer-events: none; height: 230px">
+    <div class="form-floating mb-3 communicate_block">
+        <input name="fname" class="form-control rounded-4" type="text" value="{{ user.fname }}">
+        <label for="floatingInput">Имя</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input name="lname" value="{{ user.lname }}" class="form-control rounded-4" type="text" placeholder="name@example.com">
+        <label for="floatingInput">Фамилия</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input name="email" value="{{ user.email }}" class="form-control rounded-4" type="email" placeholder="name@example.com">
+        <label for="floatingInput">Почта</label>
+    </div>
+        <div id="hidden_psw" style="display: none">
+    <div class="form-floating mb-3">
+        <input name="password" type="password" class="form-control rounded-4" placeholder="Password">
+        <label for="floatingPassword">Пароль</label>
+    </div>
+    <div class="form-floating mb-3 save">
+        <input name="password2" type="password" class="form-control rounded-4" placeholder="Password">
+        <label for="floatingPassword">Подтвердите пароль</label>
+    </div>
+            </div>
+    <input id="save" style="display: none" class="w-100 mb-2 btn btn-lg rounded-4 btn-warning save" value="Сохранить" type="submit">
+</form>
+    <input id="edit" class="w-100 mb-2 btn btn-lg rounded-4 btn-warning" value="Редактировать" type="button">
+{% endblock %}

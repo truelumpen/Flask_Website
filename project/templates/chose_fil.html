@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Мои автомобили
+{% endblock %}
+
+{% block main_content %}
+    <hr style="width: 100%; height: 5px; color: white; margin-bottom: 25px; margin-top: 25px;">
+    <h1 class="display-4 fw-normal text-white" style="font-size: xx-large; text-align: center"> Весь список филиалов:</h1>
+    <hr style="width: 100%; height: 5px; color: white; margin-bottom: 25px; margin-top: 25px;">
+{#автомобили#}
+{% for user in sellers %}
+    <div class="row" style="height: 100%; margin-top: 50px; width: 80%; margin-left: auto; margin-right: auto">
+        <div class="card mb-4 rounded-3 shadow-sm">
+              <div style="margin-left: auto;
+                          margin-right: auto;
+                         ">
+             <img src="static/img/fil/{{ user.fil_name }}/{{ user.image }}" style="width: 100%;">
+            </div >
+              <div style="margin-left: auto;
+                          margin-right: auto;
+                          width: 100%;
+                          text-align: center;">
+            <h4 class="card-title pricing-card-title">{{ user.fil_name }}<small class="text-muted fw-light"></small></h4>
+            <ul class="list-unstyled" style="margin-top: 25px">
+              <li>Почта: {{ user.email }}</li>
+              <li>Адрес: {{ user.address }}</li>
+              <li>Сделок: {{ user.trades }}</li>
+            </ul>
+                  <a href="{{ url_for('filials', user=user) }}"><button type="button" style="height: 23%;width: 50%;" class="btn btn-lg btn-warning">Перейти</button></a>
+          </div>
+        </div>
+    </div>
+{% endfor %}
+{% endblock %}

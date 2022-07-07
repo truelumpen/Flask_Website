@@ -1,0 +1,12 @@
+{% extends 'loginpage.html' %}
+
+{% block login_t %}
+    Как вы хотите зарегистрироваться?
+{% endblock %}
+
+{% block login_type %}
+    <ul style="list-style-type: none; margin: 0px; padding: 0px">
+        <li><a href="{{ url_for('customer_type') }}" class="w-100 mb-2 btn btn-lg rounded-4 btn-warning">Как покупатель</a></li>
+        <li><a href="{{ url_for('sign_up_fil') }}" class="w-100 mb-2 btn btn-lg rounded-4 btn-warning">Как продавец</a></li>
+    </ul>
+{% endblock %}

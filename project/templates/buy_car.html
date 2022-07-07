@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Оформление договора
+{% endblock %}
+
+{% block main_content %}
+    <hr style="width: 100%; height: 5px; color: white; margin-bottom: 25px; margin-top: 25px;">
+    <h1 class="display-4 fw-normal text-white" style="font-size: xx-large; text-align: center"> Подтвердите свою покупку</h1>
+    <hr style="width: 100%; height: 5px; color: white; margin-bottom: 25px; margin-top: 25px;">
+{#автомобили#}
+    <div class="row" style="margin-top: 50px; width: 80%; margin-left: auto; margin-right: auto">
+    <div class="alert alert-success" style="display: {{ style }}">
+    <strong>Успешно!</strong> Договор заключен! Вы можете скачать его в разделе договоры. Перезагрузите страницу для выхода в главное меню.
+</div>
+        <div class="card mb-4 rounded-3 shadow-sm">
+          <div class="row card-body">
+              <div style="margin-left: auto;
+                          margin-right: auto;">
+             <img src="{{ url_for('static', filename='img/fil/'+user.fil_name+'/cars/'+car.image) }}" style="width: 100%">
+            </div >
+              <div style="margin-left: auto;
+                          margin-right: auto;
+                          text-align: center;">
+            <h2 class="card-title pricing-card-title">{{ car.price }}₽<small class="text-muted fw-light"></small></h2>
+            <ul class="list-unstyled" style="font-size: xx-large; margin-top: 25px">
+              <li>{{ car.brand }}</li>
+              <li>{{ car.model }}</li>
+              <li>Пробег: {{ car.distance }}км</li>
+            </ul>
+              </div>
+                  <hr style="width: 100%; height: 5px; color: black; margin-bottom: 25px; margin-top: 25px; box-shadow: 0 0 10px 1px black;">
+            <h4 style="text-align: justify">Нажимая Купить, Вы подтверждаете свое согласие с правилами оферты и политики конфиденциальности.
+                Автомобиль филиала "{{ user.fil_name }}" марки {{ car.brand }} модели {{ car.model }} с пробегом
+                {{ car.distance }}км переходит в ваше пользование. Вы получите договор о сделке в электронном виде. Автомобиль
+                вы можете забрать по адресу {{ user.address }}.
+            </h4>
+              <form method="post" action="buy_car, car={{ car }}">
+                  <button type="submit" onclick="{
+                    document.getElementById('notif').style.display='block';
+                  }" class="w-100 btn btn-lg btn-warning">Купить</button>
+              </form>
+        </div>
+
+      </div>
+    </div>
+{% endblock %}

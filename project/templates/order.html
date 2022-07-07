@@ -1,0 +1,153 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Заказ
+{% endblock %}
+
+{% block main_content %}
+    <div id="notif" class="alert alert-success" style="display: none" xmlns="http://www.w3.org/1999/html">
+    <strong>Успешно!</strong> Договор заключен! Вы можете скачать его в разделе договоры. Перезапустите станицу для выхода в главное меню.
+    </div>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content rounded-5 shadow">
+      <div class="modal-header p-5 pb-4 border-bottom-0">
+        <h2 class="fw-bold mb-0" id="pro_em">Машина на заказ</h2>
+      </div>
+
+      <div class="modal-body p-5 pt-0">
+
+
+
+          <small class="text-muted">
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                {% if message=='Заказ создан. Проверьте вкладку Заказы.' %}
+                    <p style="color: green">{{ message }}</p>
+                {% else %}
+                    <p id="error_text">{{ message }}</p>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    </small>
+
+
+
+    <form method="post" id="sign_up_block" style="height: 850px">
+
+
+
+    <h6>Выберите модель авомобиля LADA:</h6>
+    <div id="listGroupRadios" class="list-group mx-0" style="padding-bottom: 15px">
+    <label class="list-group-item d-flex gap-2">
+        <input class="form-check-input flex-shrink-0" type="radio" name="model" id="listGroupRadios1" value="Жигули">
+      <span>
+        Жигули (+50 000₽)
+      </span>
+    </label>
+    <label class="list-group-item d-flex gap-2">
+      <input class="form-check-input flex-shrink-0" type="radio" name="model" id="listGroupRadios2" value="ВАЗ">
+      <span>
+        ВАЗ (+60 000₽)
+      </span>
+    </label>
+    <label class="list-group-item d-flex gap-2">
+      <input class="form-check-input flex-shrink-0" type="radio" name="model" id="listGroupRadios3" value="Калина">
+      <span>
+        Калина (+70 000₽)
+      </span>
+    </label>
+    <label class="list-group-item d-flex gap-2">
+      <input class="form-check-input flex-shrink-0" type="radio" name="model" id="listGroupRadios3" value="Приора">
+      <span>
+        Приора (+80 000₽)
+      </span>
+    </label>
+  </div>
+
+
+    <h6>Привод:</h6>
+        <div class="list-group mx-0" style="padding-bottom: 15px">
+    <label id="listGroupRadios2" class="list-group-item d-flex gap-2">
+      <input class="form-check-input flex-shrink-0" type="radio" name="gear" id="listGroupRadios1" value="Передний">
+      <span>
+        Передний (0₽)
+      </span>
+    </label>
+    <label class="list-group-item d-flex gap-2">
+      <input class="form-check-input flex-shrink-0" type="radio" name="gear" id="listGroupRadios2" value="Задний">
+      <span>
+        Задний (+10 000₽)
+      </span>
+    </label>
+    <label class="list-group-item d-flex gap-2">
+      <input class="form-check-input flex-shrink-0" type="radio" name="gear" id="listGroupRadios3" value="Полный">
+      <span>
+        Полный (+20 000₽)
+      </span>
+    </label>
+        </div>
+
+
+        <div class="nav-item dropdown" style="padding-bottom: 3px">
+            <h6>Мощность двигателя</h6>
+            <select name="power" class="dropdown-menu show" aria-labelledby="dropdown04" data-bs-popper="none">
+              <option class="dropdown-item" value="80">80лс (+5 000₽)</option>
+              <option class="dropdown-item" value="90">90лс (+7 500₽)</option>
+              <option class="dropdown-item" value="100">100лс (+10 000₽)</option>
+                <option class="dropdown-item" value="110">110лс (+12 500₽)</option>
+                <option class="dropdown-item" value="120">120лс (+15 000₽)</option>
+            </select>
+          </div>
+
+
+        <h6 style="padding-top: 55px; padding-bottom: 15px">Выберите цвет: <input type="color" name="color" value="#ff0000"></h6>
+
+
+
+        <h6>Руль:</h6>
+        <div class="list-group mx-0" style="padding-bottom: 15px">
+    <label id="listGroupRadios2" class="list-group-item d-flex gap-2">
+      <input class="form-check-input flex-shrink-0" type="radio" name="helm" id="listGroupRadios1" value="Левый">
+      <span>
+        Левый (0₽)
+      </span>
+    </label>
+    <label class="list-group-item d-flex gap-2">
+      <input class="form-check-input flex-shrink-0" type="radio" name="helm" id="listGroupRadios2" value="Правый">
+      <span>
+        Правый (+10 000₽)
+      </span>
+    </label>
+        </div>
+
+
+        <h6>Срок поставки:</h6>
+        <div class="list-group mx-0" style="padding-bottom: 20px">
+    <label id="listGroupRadios2" class="list-group-item d-flex gap-2">
+      <input class="form-check-input flex-shrink-0" type="radio" name="time" id="listGroupRadios1" value="Экспресс">
+      <span>
+          Экспресс🔥
+      <small class="d-block text-muted">Стоимость в 1.5 раз дороже. Срок выполнения 2 месяца</small>
+      </span>
+    </label>
+    <label class="list-group-item d-flex gap-2">
+      <input class="form-check-input flex-shrink-0" type="radio" name="time" id="listGroupRadios2" value="Стандарт">
+      <span>
+        Стандарт
+      <small class="d-block text-muted">Обычная стоимость. 6 месяцев</small>
+      </span>
+    </label>
+        </div>
+
+
+
+      <input id="save_" class="w-100 mb-2 btn btn-lg rounded-4 btn-warning save" value="Заказать" type="submit">
+</form>
+
+
+      </div>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends 'profilepage_seller.html' %}
+
+{% block login_t %}
+Информация о машине
+{% endblock %}
+
+{% block login_type %}
+    <small class="text-muted">
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                {% if message=='Изменения сохранены' %}
+                    <p style="color: green">{{ message }}</p>
+                {% else %}
+                    <p id="error_text">{{ message }}</p>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    </small>
+    <form method="post" id="sign_up_block" enctype="multipart/form-data" style="pointer-events: none; height: 420px">
+    <h6>Текущее фото на странице Вашего филиала. Вы можете загрузить новое:</h6>
+    <div class="form-floating mb-3">
+        <input name="image" class="form-control rounded-4" id="image" type="file">
+    </div>
+    <div class="form-floating mb-3">
+        <input value="{{ car.price }}" name="price" class="form-control rounded-4" id="floatingInput" type="text" placeholder="name@example.com">
+        <label for="floatingInput">Цена (в рублях)</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input value="{{ car.brand }}" name="brand" class="form-control rounded-4" id="floatingInput" type="text" placeholder="name@example.com">
+        <label for="floatingInput">Марка</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input value="{{ car.model }}" name="model" class="form-control rounded-4" id="floatingInput" type="text" placeholder="name@example.com">
+        <label for="floatingInput">Модель</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input value="{{ car.distance }}" name="distance" class="form-control rounded-4" id="floatingInput" type="text" placeholder="name@example.com">
+        <label for="floatingInput">Пробег (в км)</label>
+    </div>
+    <div id="hidden_psw" style="display: none">
+    <div class="form-floating mb-3">
+        <input name="password" type="password" class="form-control rounded-4" id="floatingPassword" placeholder="Password">
+        <label for="floatingPassword">Пароль</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input name="password2" type="password" class="form-control rounded-4" id="floatingPassword" placeholder="Password">
+        <label for="floatingPassword">Подтвердите пароль</label>
+    </div>
+    </div>
+          <input id="save" style="display: none" class="w-100 mb-2 btn btn-lg rounded-4 btn-warning save" value="Сохранить" type="submit">
+</form>
+    <input id="edit" class="w-100 mb-2 btn btn-lg rounded-4 btn-warning" value="Редактировать" type="button">
+    <form action="delete_auto/{{ car.id }}" method="post">
+    <input id="delete" class="w-100 mb-2 btn btn-lg rounded-4 btn-warning" value="Удалить автомобиль" type="button">
+{% endblock %}

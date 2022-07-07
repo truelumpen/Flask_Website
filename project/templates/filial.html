@@ -1,0 +1,54 @@
+{% extends 'base_fil.html' %}
+
+{% block title %}
+Мой филиал
+{% endblock %}
+
+{% block main_content %}
+<header>
+
+
+<img src="static/img/fil/{{ user.fil_name }}/{{ user.image }}" style="width: 100%">
+<div class="pricing-header p-3 pb-md-4 mx-auto text-left">
+      <h2 class="display-4 fw-normal text-white" style="text-align: center;">{{ user.fil_name }}</h2>
+      <ul class="text-white" style="font-size: x-large; list-style-type: none;">
+    <hr>
+    <li style="padding-top: 20px">Почта: {{ user.email }}</li>
+    <li style="padding-top: 20px"> Адрес: {{ user.address }}</li>
+    <li style="padding-top: 20px"> Сделок: {{ user.trades }}</li>
+  </ul>
+</div>
+</header>
+{#    ____#}
+    <hr style="width: 100%; height: 5px; color: white; margin-bottom: 25px; margin-top: 25px;">
+    <h1 class="display-4 fw-normal text-white" style="font-size: xx-large; text-align: center"> Каталог филиала:</h1>
+    <hr style="width: 100%; height: 5px; color: white; margin-bottom: 25px; margin-top: 25px;">
+{#автомобили#}
+{% if cars==[] %}
+    <h1 class="display-4 fw-normal text-white" style="font-size: x-large; text-align: center"> Пока не добавлено ни одного автомобиля</h1>
+{% else %}
+    {% for car in cars %}
+
+    <div style="margin-top: 40px;width: 80%;margin-left: auto;margin-right: auto;margin-bottom: 10px;">
+        <div class="card mb-4 rounded-3 shadow-sm">
+          <div class="row card-body">
+              <img src="static/img/fil/{{ user.fil_name }}/cars/{{ car.image }}" style="width: 100%">
+              <div style="margin-left: auto;
+                          margin-right: auto;
+                          text-align: center;">
+            <h1 class="card-title pricing-card-title">{{ car.price }}₽<small class="text-muted fw-light"></small></h1>
+            <ul class="list-unstyled" style="font-size: xx-large; margin-top: 25px">
+              <li>{{ car.brand }}</li>
+              <li>{{ car.model }}</li>
+              <li>Пробег: {{ car.distance }}км</li>
+            </ul>
+             <button type="button" class="w-50 btn btn-lg btn-warning">Купить</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    {% endfor %}
+{% endif %}
+{% endblock %}

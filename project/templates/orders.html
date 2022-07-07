@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Заказы
+{% endblock %}
+
+{% block main_content %}
+    <hr style="width: 100%; height: 5px; color: white; margin-bottom: 25px; margin-top: 25px;">
+    <h1 class="display-4 fw-normal text-white" style="font-size: xx-large; text-align: center"> Здесь собраны все ваши заказы</h1>
+    <hr style="width: 100%; height: 5px; color: white; margin-bottom: 25px; margin-top: 25px;">
+{#автомобили#}
+{% if orders ==[] %}
+    <h1 class="display-4 fw-normal text-white" style="font-size: x-large; text-align: center"> Вы ничего не заказали</h1>
+{% else %}
+    {% for order in orders %}
+    <div class="row" style="height: 75px; margin-top: 50px; width: 80%; margin-left: auto; margin-right: auto">
+        <div class="card mb-4 rounded-3 shadow-sm" style="background: #ffc107;">
+          <div class="row card-body">
+              <a href="static/img/ord/{{ user.email }}/{{ order.document }}.docx" download><h5 style="padding-top: 5px">{{ order.document }}: {{ order.date }}</h5></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+{% endif %}
+{% endblock %}
